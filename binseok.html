@@ -1,0 +1,623 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My E-Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    background: #f8fbff;
+    color: #20334d;
+}
+
+.nav-wrap {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
+    box-shadow: 0 2px 10px #dce8f5;
+}
+
+nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3979d8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #53667f;
+}
+
+.nav-links a:hover {
+    color: #3979d8;
+}
+
+.container {
+    width: 90%;
+    max-width: 1080px;
+    margin: auto;
+}
+
+.hero {
+    padding: 85px 0;
+    background: linear-gradient(135deg,#f7fbff,#eaf3ff);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    align-items: center;
+    gap: 40px;
+}
+
+h1 {
+    font-size: 48px;
+    color: #1c3e68;
+    margin: 20px 0;
+}
+
+h1 span {
+    color: #3979d8;
+}
+
+.hero p {
+    color: #6d7d92;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #3979d8;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    margin-right: 8px;
+}
+
+.btn:hover {
+    background: #1d4f91;
+}
+
+.profile-art {
+    text-align: center;
+}
+
+.profile-circle {
+    width: 260px;
+    height: 260px;
+    margin: auto;
+    border-radius: 50%;
+    background: #c9e1ff;
+    display: grid;
+    place-items: center;
+    font-size: 100px;
+}
+
+section {
+    padding: 75px 0;
+}
+
+.section-head {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-head h2 {
+    font-size: 32px;
+    color: #24466f;
+}
+
+.section-head p {
+    color: #6d7d92;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 25px;
+}
+
+.about-card, .info-card,
+.project-card, .activity-card,
+.contact-card {
+    background: white;
+    border: 1px solid #e3ecf7;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px #dce8f522;
+}
+
+.about-card {
+    text-align: center;
+    background: #edf5ff;
+}
+
+.avatar {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.about-card h3 {
+    color: #1d4f91;
+}
+
+.info-card h3 {
+    color: #1d4f91;
+    margin-bottom: 12px;
+}
+
+.info-card p {
+    color: #6d7d92;
+    margin-bottom: 20px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.detail {
+    background: #f4f8fd;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.detail small {
+    display: block;
+    color: #8292a7;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.skill {
+    background: #eaf3ff;
+    color: #3979d8;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.portfolio {
+    background: #f0f6ff;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.project-card {
+    padding: 0;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.project-card:hover,
+.activity-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-cover {
+    height: 150px;
+    display: grid;
+    place-items: center;
+    font-size: 65px;
+    background: linear-gradient(135deg,#75a9ec,#b9d8ff);
+}
+
+.project-body {
+    padding: 20px;
+}
+
+.project-body h3 {
+    color: #1d4f91;
+    margin-bottom: 10px;
+}
+
+.project-body p {
+    font-size: 14px;
+    color: #6d7d92;
+}
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.activity-card {
+    display: flex;
+    gap: 15px;
+    transition: .3s;
+}
+
+.activity-icon {
+    font-size: 35px;
+}
+
+.activity-card h3 {
+    color: #1d4f91;
+}
+
+.activity-card p {
+    color: #6d7d92;
+    font-size: 14px;
+}
+
+.contact {
+    background: #eaf3ff;
+}
+
+.contact-card {
+    max-width: 700px;
+    margin: auto;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dce7f5;
+    border-radius: 10px;
+    font-family: inherit;
+}
+
+.field textarea {
+    height: 110px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #8190a4;
+    background: white;
+}
+
+@media(max-width:800px) {
+    .hero-grid,
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width:600px) {
+    .nav-links {
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    .project-grid,
+    .activity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- เมนู -->
+<div class="nav-wrap">
+<nav>
+    <div class="brand">MyPortfolio.</div>
+
+    <div class="nav-links">
+        <a href="#home">หน้าแรก</a>
+        <a href="#about">แนะนำตัว</a>
+        <a href="#portfolio">ผลงาน</a>
+        <a href="#activities">กิจกรรม</a>
+        <a href="#contact">ติดต่อ</a>
+    </div>
+</nav>
+</div>
+
+<!-- หน้าแรก -->
+<header class="hero" id="home">
+<div class="container hero-grid">
+
+    <div>
+        <p>✦ WELCOME TO MY E-PORTFOLIO</p>
+
+        <h1>
+            สวัสดีค่ะ!<br>
+            ฉันคือ <span>นักสร้างสรรค์</span>
+        </h1>
+
+        <p>
+            ยินดีต้อนรับเข้าสู่แฟ้มสะสมผลงานของฉัน
+            พื้นที่รวบรวมประวัติส่วนตัว ผลงาน
+            และกิจกรรมด้านเทคโนโลยีและการเขียนโปรแกรม
+        </p>
+
+        <a href="#portfolio" class="btn">ชมผลงานของฉัน ↗</a>
+        <a href="#about" class="btn">รู้จักฉันเพิ่มเติม</a>
+    </div>
+
+    <div class="profile-art">
+        <div class="profile-circle">👩🏻‍💻</div>
+    </div>
+
+</div>
+</header>
+
+<!-- แนะนำตัว -->
+<section id="about">
+<div class="container">
+
+    <div class="section-head">
+        <h2>แนะนำตัว</h2>
+        <p>ABOUT ME</p>
+    </div>
+
+    <div class="about-grid">
+
+        <div class="about-card">
+            <div class="avatar">👩🏻</div>
+            <h3>ชื่อ-นามสกุลของคุณ</h3>
+            <p>นักเรียนชั้นมัธยมศึกษาปีที่ 6</p>
+        </div>
+
+        <div class="info-card">
+            <h3>เกี่ยวกับฉัน ✨</h3>
+
+            <p>
+                ฉันเป็นคนที่ชอบเรียนรู้สิ่งใหม่ ๆ
+                มีความสนใจด้านเทคโนโลยี การออกแบบ
+                และการเขียนโปรแกรม
+                พร้อมพัฒนาความสามารถของตัวเองอยู่เสมอ
+            </p>
+
+            <div class="details">
+                <div class="detail">
+                    <small>ชื่อเล่น</small>
+                    <strong>กรอกชื่อเล่น</strong>
+                </div>
+
+                <div class="detail">
+                    <small>โรงเรียน</small>
+                    <strong>กรอกชื่อโรงเรียน</strong>
+                </div>
+
+                <div class="detail">
+                    <small>ระดับการศึกษา</small>
+                    <strong>มัธยมศึกษาปีที่ 6</strong>
+                </div>
+
+                <div class="detail">
+                    <small>ความสนใจ</small>
+                    <strong>เทคโนโลยีและการออกแบบ</strong>
+                </div>
+            </div>
+
+            <div class="skills">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">Canva</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- ผลงาน -->
+<section class="portfolio" id="portfolio">
+<div class="container">
+
+    <div class="section-head">
+        <h2>ผลงานของฉัน</h2>
+        <p>MY PORTFOLIO</p>
+    </div>
+
+    <div class="project-grid">
+
+        <div class="project-card">
+            <div class="project-cover">💻</div>
+            <div class="project-body">
+                <h3>เว็บไซต์แนะนำตัว</h3>
+                <p>สร้างเว็บไซต์ E-Portfolio ด้วย HTML และ CSS</p>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-cover">🤖</div>
+            <div class="project-body">
+                <h3>โปรเจกต์เทคโนโลยี</h3>
+                <p>ศึกษาและออกแบบแนวคิดการนำเทคโนโลยีมาใช้</p>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-cover">🎨</div>
+            <div class="project-body">
+                <h3>อินโฟกราฟิก</h3>
+                <p>สร้างสื่อให้ความรู้ด้วยโปรแกรม Canva</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- กิจกรรม -->
+<section id="activities">
+<div class="container">
+
+    <div class="section-head">
+        <h2>กิจกรรมและประสบการณ์</h2>
+        <p>ACTIVITIES</p>
+    </div>
+
+    <div class="activity-grid">
+
+        <div class="activity-card">
+            <div class="activity-icon">🏆</div>
+            <div>
+                <h3>เข้าร่วมการแข่งขัน</h3>
+                <p>ฝึกทักษะและเรียนรู้การทำงานภายใต้ความท้าทาย</p>
+            </div>
+        </div>
+
+        <div class="activity-card">
+            <div class="activity-icon">📚</div>
+            <div>
+                <h3>อบรมและพัฒนาทักษะ</h3>
+                <p>เพิ่มพูนความรู้ด้านเทคโนโลยีและการเขียนโปรแกรม</p>
+            </div>
+        </div>
+
+        <div class="activity-card">
+            <div class="activity-icon">🤝</div>
+            <div>
+                <h3>กิจกรรมจิตอาสา</h3>
+                <p>ฝึกความรับผิดชอบและการทำงานเป็นทีม</p>
+            </div>
+        </div>
+
+        <div class="activity-card">
+            <div class="activity-icon">💡</div>
+            <div>
+                <h3>กิจกรรมในโรงเรียน</h3>
+                <p>เข้าร่วมกิจกรรมเพื่อเก็บเกี่ยวประสบการณ์</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- ติดต่อ -->
+<section class="contact" id="contact">
+<div class="container">
+
+    <div class="section-head">
+        <h2>ติดต่อฉัน</h2>
+        <p>CONTACT ME</p>
+    </div>
+
+    <div class="contact-card">
+        <form id="contactForm">
+
+            <div class="field">
+                <label>ชื่อของคุณ</label>
+                <input type="text" id="name" placeholder="กรอกชื่อ" required>
+            </div>
+
+            <div class="field">
+                <label>อีเมล</label>
+                <input type="email" id="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="field">
+                <label>ข้อความ</label>
+                <textarea id="message" placeholder="เขียนข้อความ..." required></textarea>
+            </div>
+
+            <button class="btn" type="submit">ส่งข้อความ ✉</button>
+
+        </form>
+    </div>
+
+</div>
+</section>
+
+<footer>
+    © <span id="year"></span> My E-Portfolio
+    | Created with HTML, CSS & JavaScript
+</footer>
+
+<script>
+// แสดงปีปัจจุบัน
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+// ระบบส่งข้อความผ่านอีเมล
+document.getElementById("contactForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const subject = encodeURIComponent("ติดต่อจากเว็บไซต์ E-Portfolio");
+
+    const body = encodeURIComponent(
+        "ชื่อ: " + name +
+        "\nอีเมล: " + email +
+        "\nข้อความ: " + message
+    );
+
+    window.location.href =
+        "mailto:?subject=" + subject + "&body=" + body;
+});
+</script>
+
+</body>
+</html>
